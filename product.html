@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body
+{ 
+  background:url("light.jpeg") ;
+  background-attachment:fixed ;
+  background-position:center ;
+  background-size: ;
+  margin: 0; 
+}
+.cont {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: contain;
+  height: 100%;
+  width: 100%;
+}
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 300px;
+  margin:auto;
+  text-align: center;
+  justify-content: center;
+  font-family: arial;
+  background-color: #DDA27E
+;
+}
+
+.price {
+  color: grey;
+  font-size: 22px;
+
+}
+
+.card button {
+  border: none;
+  outline: 0;
+  padding: 12px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+.card button:hover {
+  opacity: 0.7;
+}
+.navigation {
+            margin: 20px;
+            display: flex;
+            justify-content: left;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .navigation a {
+            text-decoration: none;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            justify-content: left;
+        }
+        .nav-btn {
+            text-decoration: none;
+
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+
+            padding: 12px 25px;
+            min-width: 110px;
+
+            border-radius: 4px;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.12);
+
+            transition: 0.3s;
+        }
+
+        .nav-btn i {
+            margin-right: 7px;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: #163b7a;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+</style>
+</head>
+<body>
+  <div class="navigation">
+        <a href="homepage.html" class="nav-btn">
+        <i class="fa-solid fa-house"></i>
+        Back to Home
+        </a>
+        </div>
+
+<h2 style="text-align:center">Product Card</h2>
+<br>
+<div class="card">
+  <img src="ess.jpeg" alt="Esspresso" style="width:100%">
+  <h1>Esspresso</h1>
+  <p class="price">$19.99</p>
+  <p>Crafted to awaken the senses, our signature espresso is a rich, full-bodied shot brewed under high pressure to deliver a velvety crema and an unforgettable depth of flavor in every sip.</p>
+  <p><button>Add to Cart</button></p>
+</div>
+<div class="card">
+  <img src="caramel.jpeg" alt="Caramel" style="width:100%">
+  <h1>Caramel Macchiatto</h1>
+  <p class="price">$19.99</p>
+  <p>Layered with rich espresso, steamed milk, and sweet vanilla, our caramel macchiato is finished with a signature crosshatch drizzle of buttery caramel for the ultimate sweet and bold indulgence.</p>
+  <p><button>Add to Cart</button></p>
+</div>
+<div class="card">
+  <img src="matcha.jpeg" alt="Latte" style="width:100%">
+  <h1>Matcha Latte</h1>
+  <p class="price">$19.99</p>
+  <p>Vibrant, premium ceremonial-grade matcha whisked smooth and poured over iced or steamed milk creates a rich, earthy, and naturally sweet green tea experience.</p>
+  <p><button>Add to Cart</button></p>
+  <br>
+<div class="card">
+  <img src="whites.jpeg" alt="Flat" style="width:100%">
+  <h1>Flat White</h1>
+  <p class="price">$19.99</p>
+  <p>Rich, bold espresso meets silky, velvety microfoam in perfect harmony. Delivering a stronger coffee kick than a latte with a smoother, creamier finish than a cappuccino, it’s pure comfort in every sip.</p>
+  <p><button>Add to Cart</button></p>
+<div class="card">
+  <img src="longblack.jpeg" alt="long" style="width:100%">
+  <h1>Long Black</h1>
+  <p class="price">$19.99</p>
+  <p>Bold, robust, and unapologetically rich. Made by pouring a double shot of espresso over hot water to preserve its delicate crema, it delivers a stronger flavor profile and deeper body than a standard Americano. Perfect for purists who love their coffee strong and black.</p>
+  <p><button>Add to Cart</button></p>
+</div>
+</div>
+</body>
+</html>

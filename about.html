@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+.column {
+  float: left;
+  width: 33.3%;
+  margin-bottom: 16px;
+  padding: 0 8px;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin: 8px;
+}
+
+.about-section {
+  padding: 50px;
+  text-align: center;
+  background-color: #915717;
+  color: white;
+}
+
+.container {
+  padding: 0 16px;
+}
+
+.container::after, .row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.title {
+  color: grey;
+}
+
+.button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+}
+
+.button:hover {
+  background-color: #555;
+}
+
+@media screen and (max-width: 650px) {
+  .column {
+    width: 100%;
+    display: block;
+  }
+}
+.navigation {
+            margin: 20px;
+            display: flex;
+            justify-content: left;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .navigation a {
+            text-decoration: none;
+            background: white;
+            color: black;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            justify-content: left;
+        }
+        .nav-btn {
+            text-decoration: none;
+
+            background: rgba(255, 255, 255, 0.9);
+            color: #666;
+
+            padding: 12px 25px;
+            min-width: 110px;
+
+            border-radius: 4px;
+
+            box-shadow:
+                0 4px 10px rgba(0, 0, 0, 0.12);
+
+            transition: 0.3s;
+        }
+
+        .nav-btn i {
+            margin-right: 7px;
+        }
+
+        .nav-btn:hover {
+            background: white;
+            color: #163b7a;
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 8px 18px rgba(0, 0, 0, 0.18);
+        }
+</style>
+</head>
+<body>
+  <div class="navigation">
+        <a href="homepage.html" class="nav-btn">
+        <i class="fa-solid fa-house"></i>
+        Back to Home
+        </a>
+        </div>
+
+<div class="about-section">
+  <h1>Beanisaya</h1>
+  <p>A cup of pure coffee goodness</p>
+</div>
+
+<h2 style="text-align:center">Our Team</h2>
+<div class="row">
+  <div class="column">
+    <div class="card">
+      <img src="jorge.jpeg" alt="Jorge" style="width:100%">
+      <div class="container">
+        <h2>Jorge Doe</h2>
+        <p class="title">Barista</p>
+        <p>Coffee Maker since 2018</p>
+        <p>jorge@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="card">
+      <img src="ali.jpeg" alt="Ali" style="width:100%">
+      <div class="container">
+        <h2>Ali Mokoy</h2>
+        <p class="title">Waiter</p>
+        <p>Your Waiter</p>
+        <p>ali@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="column">
+    <div class="card">
+      <img src="boss.jpeg" alt="Jane" style="width:100%">
+      <div class="container">
+        <h2>Jane Rose</h2>
+        <p class="title">Designer</p>
+        <p>CEO</p>
+        <p>jane@gmail.com</p>
+        <p><button class="button">Contact</button></p>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

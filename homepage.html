@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        body { 
+            background:url("hep.gif") ;
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            background: #824017
+
+
+; 
+        }
+        
+        nav { 
+            background: #DDA27E; 
+            padding: 18px; 
+            text-align: center; 
+        }
+        
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            margin: 15px; 
+            font-weight: bold; 
+        }
+
+        /* Updated container with background image and overlay */
+        .home { 
+            min-height: calc(100vh - 56px); /* Adjusts for the navbar height */
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center; 
+            /* Adds a dark overlay blend over a cinematic background image */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('lam).jpg') no-repeat center center/cover;
+            color: white; 
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        /* Stylized white transparent box containing the text */
+        .content-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(8px);
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 800px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        /* Title positioned squarely above the paragraph */
+        .home h1 { 
+            font-size: 45px; 
+            margin-top: 0;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* Paragraph text adjustments */
+        .home p { 
+            font-size: 18px; 
+            line-height: 1.6;
+            margin: 0;
+            color: #e0e0e0;
+        }
+        .logout-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+
+            margin-top: 20px;
+            padding: 12px 28px;
+
+            border: none;
+            cursor: pointer;
+
+            background: #163b7a;
+            color: white;
+
+            font-weight: bold;
+            border-radius: 3px;
+
+            transition: 0.3s;
+        }
+        .logout-btn:hover {
+            background: #0d2855;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    
+
+    <nav> 
+        <a href="homepage.html">Home</a> 
+        <a href="about.html">About</a> 
+        <a href="product.html">Products</a> 
+        <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="logout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+LOGOUT
+</button>  
+    </nav> 
+
+    <div class="home"> 
+        <!-- New semantic wrapping container -->
+        <div class="content-container"> 
+            <h1>Hi Welcome To Beanisaya</h1> 
+            <p>Welcome to "Beanisaya Coffee Shop", your warm neighborhood sanctuary where exceptional artisan coffee and genuine community connection come together. Founded on a deep passion for the craft, we source ethically cultivated beans and roast them with precision to bring out the most vibrant, complex flavor profiles in every batch.
+
+Whether you are seeking a quiet morning corner to jumpstart your productivity, catching up with an old friend over a velvety latte, or grabbing a swift, expertly pulled espresso on the go, our space is designed to feel like an extension of your own living room. From our signature handcrafted beverages to our freshly baked artisanal pastries, every detail is thoughtfully curated to elevate your daily routine. Come on in, find your favorite seat, and experience a place where every cup is poured with care and every guest is treated like family.</p> 
+        </div> 
+    </div>
+<script>
+function logout() {
+alert("You have been logged out!");
+window.location.href = "login.html";
+}
+</script>
+</body> 
+</html>
+
