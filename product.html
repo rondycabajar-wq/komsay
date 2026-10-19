@@ -2,155 +2,514 @@
 <html>
 <head>
 <style>
-body
-{ 
-  background:url("light.jpeg") ;
-  background-attachment:fixed ;
-  background-position:center ;
-  background-size: ;
-  margin: 0; 
-}
-.cont {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: contain;
-  height: 100%;
-  width: 100%;
-}
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 300px;
-  margin:auto;
-  text-align: center;
-  justify-content: center;
-  font-family: arial;
-  background-color: #DDA27E
-;
-}
+<title>Our Coffee Menu</title>
 
-.price {
-  color: grey;
-  font-size: 22px;
+  <style>
+    :root {
+      --coffee: #3d2116;
+      --coffee-light: #70462f;
+      --caramel: #dda27e;
+      --cream: #fff8f0;
+      --ink: #251a15;
+    }
 
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.card button {
-  border: none;
-  outline: 0;
-  padding: 12px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  justify-content: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--ink);
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--cream);
+      background-image: url("light.jpeg");
+      background-position: center;
+      background-size: cover;
+      background-attachment: fixed;
+    }
 
-.card button:hover {
-  opacity: 0.7;
-}
-.navigation {
-            margin: 20px;
-            display: flex;
-            justify-content: left;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .navigation a {
-            text-decoration: none;
-            background: white;
-            color: black;
-            padding: 10px 20px;
-            margin: 5px;
-            border-radius: 5px;
-            justify-content: left;
-        }
-        .nav-btn {
-            text-decoration: none;
+    .page {
+      width: min(1400px, 100%);
+      margin: 0 auto;
+      padding: 20px clamp(14px, 3vw, 36px) 44px;
+    }
 
-            background: rgba(255, 255, 255, 0.9);
-            color: #666;
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
 
-            padding: 12px 25px;
-            min-width: 110px;
+    .nav-btn,
+    .cart-counter {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 44px;
+      padding: 11px 17px;
+      border: 0;
+      border-radius: 8px;
+      color: var(--coffee);
+      background: rgba(255, 255, 255, 0.94);
+      box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+      font-size: 0.92rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
 
-            border-radius: 4px;
+    .nav-btn:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
 
-            box-shadow:
-                0 4px 10px rgba(0, 0, 0, 0.12);
+    .cart-counter {
+      background: var(--coffee);
+      color: #fff;
+    }
 
-            transition: 0.3s;
-        }
+    header {
+      max-width: 760px;
+      margin: 12px auto 34px;
+      text-align: center;
+    }
 
-        .nav-btn i {
-            margin-right: 7px;
-        }
+    .eyebrow {
+      margin: 0 0 9px;
+      color: var(--coffee-light);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
 
-        .nav-btn:hover {
-            background: white;
-            color: #163b7a;
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+      line-height: 1.08;
+    }
 
-            transform: translateY(-3px);
+    .intro {
+      margin: 0;
+      color: #65554b;
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      line-height: 1.6;
+    }
 
-            box-shadow:
-                0 8px 18px rgba(0, 0, 0, 0.18);
-        }
-</style>
+    /* Product grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .card {
+      display: flex;
+      min-width: 0;
+      flex-direction: column;
+      overflow: hidden;
+      border: 1px solid rgba(76, 43, 26, 0.12);
+      border-radius: 14px;
+      background: rgba(221, 162, 126, 0.97);
+      box-shadow: 0 5px 16px rgba(0, 0, 0, 0.12);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.16);
+    }
+
+    .product-image {
+      display: block;
+      width: 100%;
+      height: 190px;
+      padding: 10px;
+      object-fit: contain;
+      background: rgba(255, 248, 240, 0.22);
+    }
+
+    .card-content {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      padding: 16px;
+      text-align: center;
+    }
+
+    .card h2 {
+      margin: 0 0 8px;
+      font-size: clamp(1.05rem, 1.5vw, 1.3rem);
+      line-height: 1.25;
+    }
+
+    .price {
+      margin: 0 0 10px;
+      color: #75513c;
+      font-size: 1.15rem;
+      font-weight: 700;
+    }
+
+    .description {
+      flex: 1;
+      margin: 0 0 17px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .add-button {
+      width: 100%;
+      min-height: 43px;
+      border: 0;
+      border-radius: 7px;
+      padding: 11px 12px;
+      color: #fff;
+      background: #080706;
+      font-size: 0.92rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .add-button:hover {
+      background: var(--coffee-light);
+    }
+
+    .add-button:active {
+      transform: scale(0.98);
+    }
+
+    .add-button:focus-visible,
+    .nav-btn:focus-visible {
+      outline: 3px solid #fff;
+      outline-offset: 3px;
+    }
+
+    .footer {
+      margin-top: 34px;
+      color: #5d4638;
+      text-align: center;
+      font-size: 0.85rem;
+    }
+
+    /* Tablet */
+    @media (max-width: 1000px) {
+      .products {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .product-image {
+        height: 170px;
+      }
+    }
+
+    /* Mobile phones */
+    @media (max-width: 700px) {
+      .page {
+        padding: 14px 12px 32px;
+      }
+
+      .topbar {
+        margin-bottom: 22px;
+      }
+
+      header {
+        margin: 10px auto 24px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .product-image {
+        height: 145px;
+        padding: 8px;
+      }
+
+      .card-content {
+        padding: 12px 11px;
+      }
+
+      .card h2 {
+        font-size: 1rem;
+      }
+
+      .price {
+        font-size: 1.05rem;
+      }
+
+      .description {
+        font-size: 0.82rem;
+        line-height: 1.4;
+      }
+
+      .nav-btn,
+      .cart-counter {
+        padding: 10px 12px;
+        font-size: 0.82rem;
+      }
+    }
+
+    /* Very small phones */
+    @media (max-width: 360px) {
+      .products {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image {
+        height: 190px;
+      }
+
+      .card-content {
+        padding: 15px;
+      }
+
+      .card h2 {
+        font-size: 1.15rem;
+      }
+
+      .description {
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
 </head>
-<body>
-  <div class="navigation">
-        <a href="homepage.html" class="nav-btn">
-        <i class="fa-solid fa-house"></i>
-        Back to Home
-        </a>
-        </div>
 
-<h2 style="text-align:center">Products</h2>
-<br>
-<div class="card">
-  <img src="ess.jpeg" alt="Esspresso" style="width:100%">
-  <h1>Esspresso</h1>
-  <p class="price">$19.99</p>
-  <p>Crafted to awaken the senses, our signature espresso is a rich, full-bodied shot brewed under high pressure to deliver a velvety crema and an unforgettable depth of flavor in every sip.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-  <br>
-  <br>
-<div class="card">
-  <img src="caramel.jpeg" alt="Caramel" style="width:100%">
-  <h1>Caramel Macchiatto</h1>
-  <p class="price">$19.99</p>
-  <p>Layered with rich espresso, steamed milk, and sweet vanilla, our caramel macchiato is finished with a signature crosshatch drizzle of buttery caramel for the ultimate sweet and bold indulgence.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<br>
-<br>
-<div class="card">
-  <img src="matcha.jpeg" alt="Latte" style="width:100%">
-  <h1>Matcha Latte</h1>
-  <p class="price">$19.99</p>
-  <p>Vibrant, premium ceremonial-grade matcha whisked smooth and poured over iced or steamed milk creates a rich, earthy, and naturally sweet green tea experience.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<br>
-<br>
-<div class="card">
-  <img src="whites.jpeg" alt="Flat" style="width:100%">
-  <h1>Flat White</h1>
-  <p class="price">$19.99</p>
-  <p>Rich, bold espresso meets silky, velvety microfoam in perfect harmony. Delivering a stronger coffee kick than a latte with a smoother, creamier finish than a cappuccino, it’s pure comfort in every sip.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-<br>
-<br>
-<div class="card">
-  <img src="longblack.jpeg" alt="long" style="width:100%">
-  <h1>Long Black</h1>
-  <p class="price">$19.99</p>
-  <p>Bold, robust, and unapologetically rich. Made by pouring a double shot of espresso over hot water to preserve its delicate crema, it delivers a stronger flavor profile and deeper body than a standard Americano. Perfect for purists who love their coffee strong and black.</p>
-  <p><button>Add to Cart</button></p>
-</div>
-</div>
+<body>
+  <main class="page">
+
+    <nav class="topbar" aria-label="Page navigation">
+      <a href="homepage.html" class="nav-btn">
+        Back to Home
+      </a>
+
+      <div class="cart-counter" aria-live="polite">
+        Cart: <span id="cartTotal">0</span>
+      </div>
+    </nav>
+
+    <header>
+      <p class="eyebrow">Premium Coffee &amp; More</p>
+      <h1>Our Coffee Collection</h1>
+      <p class="intro">
+        Crafted with quality ingredients, made for every mood.
+      </p>
+    </header>
+
+    <section
+      class="products"
+      id="products"
+      aria-label="Coffee products">
+    </section>
+
+    <p class="footer">
+      Freshly brewed, made with care. ?
+    </p>
+
+  </main>
+
+  <script>
+    /*
+      Keep your product images in the same folder
+      as this HTML file.
+    */
+
+    const products = [
+      {
+        name: "Espresso",
+        image: "ess.jpeg",
+        price: 3.50,
+        description: "Rich, full-bodied espresso with a smooth crema and bold flavor."
+      },
+      {
+        name: "Caramel Macchiato",
+        image: "caramel.jpeg",
+        price: 5.50,
+        description: "Espresso, vanilla, steamed milk, and a sweet caramel drizzle."
+      },
+      {
+        name: "Matcha Latte",
+        image: "matcha.jpeg",
+        price: 5.50,
+        description: "Earthy matcha blended smoothly with creamy steamed milk."
+      },
+      {
+        name: "Flat White",
+        image: "whites.jpeg",
+        price: 4.75,
+        description: "Bold espresso balanced with silky, velvety microfoam."
+      },
+      {
+        name: "Long Black",
+        image: "longblack.jpeg",
+        price: 3.75,
+        description: "Strong espresso poured over hot water to preserve its crema."
+      },
+      {
+        name: "Latte",
+        image: "latte.jpeg",
+        price: 4.75,
+        description: "Smooth espresso mixed with steamed milk and a light foam."
+      },
+      {
+        name: "Cappuccino",
+        image: "capuccino.jpeg",
+        price: 4.75,
+        description: "A classic balance of espresso, steamed milk, and airy foam."
+      },
+      {
+        name: "Americano",
+        image: "americano.jpeg",
+        price: 3.75,
+        description: "Espresso and hot water for a clean, rich coffee taste."
+      },
+      {
+        name: "Mocha",
+        image: "mocha.jpeg",
+        price: 5.25,
+        description: "Espresso and chocolate finished with creamy steamed milk."
+      },
+      {
+        name: "Iced Latte",
+        image: "icedlatte.jpeg",
+        price: 5.00,
+        description: "Chilled espresso and milk served over refreshing ice."
+      },
+      {
+        name: "Vanilla Latte",
+        image: "vanillalatte.jpeg",
+        price: 5.25,
+        description: "Espresso and steamed milk with a mellow touch of vanilla."
+      },
+      {
+        name: "Hazelnut Latte",
+        image: "hazenutlatte.jpeg",
+        price: 5.25,
+        description: "Creamy latte with a warm, nutty hazelnut flavor."
+      },
+      {
+        name: "Spanish Latte",
+        image: "spanishlatte.jpeg",
+        price: 5.50,
+        description: "Espresso and milk with a sweet, condensed-milk finish."
+      },
+      {
+        name: "White Chocolate Mocha",
+        image: "whitechoc.jpeg",
+        price: 5.75,
+        description: "Espresso blended with sweet white chocolate and milk."
+      },
+      {
+        name: "Affogato",
+        image: "affogato.jpeg",
+        price: 4.50,
+        description: "A shot of hot espresso poured over vanilla ice cream."
+      },
+      {
+        name: "Cortado",
+        image: "cortado.jpeg",
+        price: 4.25,
+        description: "A short espresso softened with a small amount of warm milk."
+      },
+      {
+        name: "Iced Americano",
+        image: "icedamericano.jpeg",
+        price: 4.00,
+        description: "Bold espresso, cold water, and ice for a crisp finish."
+      },
+      {
+        name: "Salted Caramel Latte",
+        image: "saltedcaramel.jpeg",
+        price: 5.75,
+        description: "Espresso and creamy milk with caramel and a hint of sea salt."
+      },
+      {
+        name: "Caramel Latte",
+        image: "caramellatte.jpeg",
+        price: 5.50,
+        description: "A smooth latte sweetened with buttery caramel."
+      },
+      {
+        name: "Cold Brew",
+        image: "coldbrew.jpeg",
+        price: 4.75,
+        description: "Slow-steeped coffee with a smooth, mellow, refreshing taste."
+      }
+    ];
+
+    const grid = document.getElementById("products");
+    const cartTotal = document.getElementById("cartTotal");
+
+    let cartCount = 0;
+
+    products.forEach((product) => {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      const image = document.createElement("img");
+      image.className = "product-image";
+      image.src = product.image;
+      image.alt = product.name;
+      image.loading = "lazy";
+
+      // Hide the image if its file is missing.
+      image.onerror = () => {
+        image.style.display = "none";
+      };
+
+      const content = document.createElement("div");
+      content.className = "card-content";
+
+      const name = document.createElement("h2");
+      name.textContent = product.name;
+
+      const price = document.createElement("p");
+      price.className = "price";
+      price.textContent = "$" + product.price.toFixed(2);
+
+      const description = document.createElement("p");
+      description.className = "description";
+      description.textContent = product.description;
+
+      const button = document.createElement("button");
+      button.className = "add-button";
+      button.type = "button";
+      button.textContent = "+ Add to Cart";
+
+      button.setAttribute(
+        "aria-label",
+        "Add " + product.name + " to cart"
+      );
+
+      button.addEventListener("click", () => {
+        cartCount++;
+        cartTotal.textContent = cartCount;
+
+        button.textContent = "? Added";
+
+        window.setTimeout(() => {
+          button.textContent = "+ Add to Cart";
+        }, 900);
+      });
+
+      content.append(name, price, description, button);
+      card.append(image, content);
+      grid.appendChild(card);
+    });
+  </script>
 </body>
 </html>
