@@ -285,22 +285,32 @@
       *::after {
         transition: none !important;
       }
+  nav { 
+            background: #DDA27E; 
+            padding: 18px; 
+            text-align: center; 
+        }
+nav a { 
+            color: white; 
+            text-decoration: none; 
+            margin: 15px; 
+            font-weight: bold;
+			}
     }
   </style>
 </head>
 
 <body>
-  <main class="page">
-
-    <nav class="topbar" aria-label="Page navigation">
-      <a href="homepage.html" class="nav-btn">
-        Back to Home
-      </a>
-
-      <div class="cart-counter" aria-live="polite">
-        Cart: <span id="cartTotal">0</span>
-      </div>
-    </nav>
+ <nav> 
+        <a href="homepage.html">Home</a> 
+        <a href="about.html">About</a> 
+        <a href="product.html">Products</a> 
+        <a href="contact.html">Contact</a>
+        <button class="logout-btn" onclick="logout()">
+<i class="fa-solid fa-right-from-bracket"></i>
+LOGOUT
+</button>  
+    </nav> 
 
     <header>
       <p class="eyebrow">Premium Coffee &amp; More</p>
